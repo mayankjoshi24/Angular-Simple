@@ -1,20 +1,55 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
+<div class="a">
+  <button class="btn btn-info">Projects</button>
+  <button class="btn btn-info">Users</button>
+  <hr>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://blog.angular.io//">Angular blog</a></h2>
-  </li>
-</ul>
+
+<h2>My Projects</h2>
+<hr>
+<button class="btn btn-primary" (click)="showHide=!showHide">Create new Project</button>
+
+<div class="form" name="abc" *ngIf="showHide">
+  <label>Name</label>
+  <input type="text" id="name" [(ngModel)]="name" class="form-control">
+  <label>Description</label>
+  <input type="text" id="desc" [(ngModel)]="description" class="form-control">
+  <label>Status</label>
+  <select id="status" [(ngModel)]="status" class="form-control">
+   <option >Select</option>
+  <option value="Active">Active</option>
+  <option value="InActive">InActive</option>
+  <option value="Critical">Critical</option>
+</select>
+  <div class="abc">
+
+    <button class="btn btn-success" (click)="showResult()">Create</button>
+    <button class="btn btn-danger" (click)="showHide=!showHide">Close</button>
+  </div>
+</div>
+
+<div class="area" *ngFor="let hero of halo" [ngSwitch]="hero.status">
+  
+  <h2 class="xyz">{{hero.name}}</h2>
+
+
+  <span *ngSwitchCase="'Active'" class="badge badge-success">{{hero.status}}</span>
+  <span *ngSwitchCase="'InActive'" class="badge badge-secondary">{{hero.status}}</span>
+  <span *ngSwitchCase="'Critical'" class="badge badge-danger">{{hero.status}}</span>
+
+
+
+  <h4>{{hero.description}}</h4>
+  <select id="status" [disabled] class="form-control java">
+      <option >{{hero.status}}</option>
+      <option value="Active">Active</option>
+      <option value="InActive">InActive</option>
+      <option value="Critical">Critical</option>
+      </select>
+
+  <button class="btn btn-success x" (click)="onEdit()">Save</button>
+  <button class="btn btn-danger y" (click)="onClose()">Delete</button>
+
+
+</div>
+
 
